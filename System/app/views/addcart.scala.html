@@ -1,0 +1,30 @@
+@(borrowForm: Form[Borrow_books], book_id: Int, qty_shelf: Int)
+@import helper._
+
+@main("Add Basket"){
+	
+	<div class="icons">
+		<img src="@routes.Assets.at("images/addbasket.png")"/></br></br></br>
+	</div>
+
+	<div id="welcome">
+		<font size="12"><b>Borrow a Book</b></font>
+	</div>
+	
+	<div class="borrow">
+	
+			@form(routes.Application.save(book_id: Int, qty_shelf:Int)) {
+				<fieldset>
+				        @input(borrowForm("book_id"), '_label -> "Book id: (1-13)") { (id, name, value, _) =>
+        				<input type="text"  value="@book_id" disabled=""/> }
+				        @inputText(borrowForm("user_name"), '_label -> "Username:")
+				        @inputText(borrowForm("issue_date"), '_label -> "Issue Date:")
+				        @inputText(borrowForm("due_date"), '_label -> "Due Date:")
+				          
+				 </fieldset>
+  
+				<input type="Submit" value ="Borrow" class = "btn btn-primary"/>
+			}
+	</div>
+
+}

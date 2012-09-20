@@ -1,0 +1,39 @@
+@(showBorrow: List[Borrow_book], borrowForm: Form[Borrow_books])
+
+
+@main("Borrowed Books"){
+	<div class="icons">
+		<img src="@routes.Assets.at("images/borrow.png")"/></br></br></br>
+	</div>
+	
+	<div class="search2 input-append">
+			<input type="search" class="add-on" id="appendedInputButton"  placeholder="Enter Book Name...">
+            <input type="submit" class="btn" id="searchsubmit" value="Search">
+     </div>
+	
+	<div id="welcome">
+		<font size="13"><b>Borrowed Books</b></font>
+	</div>
+	
+	<table class="tbbook zebra-striped" cellpadding="5">
+    		<tr>
+  				<th>Transaction Number</th>
+  				<th>Book Title</th>
+	  			<th>Date Borrowed</th>
+	            <th>Due Date</th>
+	        </tr>
+        	@showBorrow.map { borrow_book =>
+            <tr>
+            	<td><a href="@routes.Application.selectReturnBook(
+            	borrow_book.borrowbook_id.get)">@borrow_book.borrowbook_id</a></td>
+            	<td>@borrow_book.book_title</td>
+	            <td>@borrow_book.issue_date</td>
+	            <td>@borrow_book.due_date</td>
+	            <td></td>
+            </tr>
+           }
+            <tr><td colspan="6"><h3>@showBorrow.size book(s) title</h3></td></tr>
+ 
+    </table>
+	
+}

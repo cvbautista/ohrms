@@ -1,0 +1,23 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+
+GET     /                                   controllers.Application.login
+POST    /login_attemp                       controllers.Application.authenticate
+GET     /home                       		controllers.Application.homes
+GET     /available_books                 	controllers.Application.available
+GET     /borrow_books                    	controllers.Application.borrow
+GET     /reports                     		controllers.Application.report
+GET     /error            				    controllers.Application.error
+POST   	/borrowed                 			controllers.Application.save(book_id: Int, qty_shelf: Int)
+GET     /signOut            				controllers.Application.signout
+GET     /book_title                  		controllers.Application.booktitle(book_id: Int, qty_shelf: Int)
+GET		/select_return/:returnbook_id	    controllers.Application.selectReturnBook(returnbook_id: Int)
+
+POST    /books/:book_id				controllers.Application.delete(book_id: Int)
+#POST    /qty_shelfupdate/:book_id           controllers.Application.add(book_id: Int)
+
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)

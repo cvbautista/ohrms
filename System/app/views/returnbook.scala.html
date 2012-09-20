@@ -1,0 +1,30 @@
+@(book_id: Int, returnList:List[Borrow_books])
+@import helper._
+
+
+@main("Return"){
+
+<div class="icons">
+		<img src="@routes.Assets.at("images/return.png")"/></br></br></br>
+	</div>
+	<div id="welcome">
+		<h1>Returning a book:</h1>
+		
+	
+		@returnList.map{ return_book =>
+			Transaction Number: <input type="text" disabled="" value="@return_book.borrowbook_id"/></br>
+			User name:<input type="text" disabled=""  value="@return_book.user_name"/></br>
+			Book Id:<input type="text" disabled=""  value="@return_book.book_id"/></br>
+			Issue Date:<input type="text" disabled=""  value="@return_book.issue_date"/></br>
+			Due Date: <input type="text" disabled=""  value="@return_book.due_date"/></br>
+			
+			
+		  }
+		  
+		  
+		  @form(routes.Application.delete(book_id)) {	
+				<input type="submit" class="btn btn-primary" value="Return"/>
+   
+    	}
+	
+}

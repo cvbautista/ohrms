@@ -1,0 +1,47 @@
+@(showAll: List[Book])
+
+@main("Available Books"){
+
+<div class="icons">
+<img src="@routes.Assets.at("images/available.png")"/></br></br></br>
+</div>
+
+	
+	<div class="search2 input-append">
+	 
+			<input type="search" class="add-on" id="appendedInputButton" name="f"  placeholder="Enter book Name...">
+            <input type="submit" class="btn" id="searchsubmit" value="Search">
+            
+    </div>
+	
+	<div id="welcome">
+		<font size="12"><b>Available Books</b></font>
+	</div>
+	
+    	<table class="tbbook table-striped table-bordered table-condensed">
+    		
+  			<tr>
+	  			<th>Id</th>
+	            <th>Book Title</th>
+	            <th>Book Author</th>
+	            <th>Book Publisher</th>
+	            <th>Qty in Shelf</th>
+	       		<th>Book Cost</th>
+       		</tr>
+        	
+        	@showAll.map { book =>
+        			
+            <tr>
+	            <td>@book.book_id</td>
+	            <td><a href="@routes.Application.booktitle(book.book_id.get,book.qty_shelf)">@book.book_title</a></td>
+	            <td>@book.book_author</td>
+	            <td>@book.publisher</td>
+	            
+	            <td>@book.qty_shelf</td>
+	       		<td>@book.cost</td>
+            </tr>
+           } 
+           <tr><td colspan="6"><h3>@showAll.size book(s) title</h3></td></tr>
+        </table>
+        
+}

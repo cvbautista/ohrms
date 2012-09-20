@@ -1,0 +1,43 @@
+@(form: Form[(String,String)])(implicit flash: Flash)
+
+@loginmain("Login") {
+
+	<div class="icons">
+		<img src="@routes.Assets.at("images/login.png")"/></br></br></br>
+	</div>
+        
+        @helper.form(routes.Application.authenticate) {
+            
+           <div id="form2">
+
+				<br/><font color="pink" size="9"><b>&nbsp;&nbsp;&nbsp;
+				&nbsp;LOGIN</b></font></br></br>
+	              <div id="loginfield">
+	                <img src="@routes.Assets.at("images/username.png")"/>
+	              <input type="text" name="user_name" placeholder="Username" id="user_name" value="@form("user_name").value"></br>
+	                
+	                <img src="@routes.Assets.at("images/password.png")"/>
+	                 <input type="Password" name="p_word" id="p_word" placeholder="Password">
+	                 
+	                 
+	               <button type="submit" id="loginbutton" class="btn btn-primary">Login</button>
+             </div>  
+            
+            @form.globalError.map { error =>
+               </br></br> </br> </br>  <font color="red">
+                    @error.message
+                </font>
+            }
+            
+            @flash.get("success").map { message =>
+                <p class="success">
+                    @message
+                </p>
+            }
+
+            
+        }
+        
+}
+
+
