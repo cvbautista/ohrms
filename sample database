@@ -1,0 +1,56 @@
+STAFF/DOCTOR'S TABLE
+id(fk)
+firstname
+lastname
+city
+designation(position)
+license no. 
+username
+password
+email
+address
+phone number
+active
+salary
+remarks
+
+
+
+PATIENT'S TABLE
+registration No.(primaryKey)
+firstname
+lastname
+doctor(fk)
+address
+phone number
+city
+email
+date of birth
+remarks
+
+USER's TABLE
+username(primaryKey)
+password
+type(fk position)
+
+PAYMENT'S SYSTEM
+id(primaryKey)
+patient(fk)
+amount
+remarks
+payment date
+balance (auto compute)
+debit by
+
+APOINTMENT'S TABLE
+patient(fk)
+doctor(fk)
+date
+time
+
+
+TREATMENT'S TABLE
+id(primaryKey)
+treatment description
+amount
+image
